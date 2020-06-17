@@ -1,4 +1,4 @@
-# day_1
+# Flutter Assignment Day 1
 
 A new Flutter project.
 
