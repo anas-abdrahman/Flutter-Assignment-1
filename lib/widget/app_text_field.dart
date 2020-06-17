@@ -13,7 +13,10 @@ class AppTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       decoration: InputDecoration(
-        hintStyle: TextStyle(color: Colors.grey[500], fontSize: 14),
+        hintStyle: TextStyle(
+          color: Colors.grey[500],
+          fontSize: 14,
+        ),
         hintText: this.hintText,
         prefixIcon: this.icon,
         contentPadding: EdgeInsets.all(14),
@@ -23,8 +26,8 @@ class AppTextField extends StatelessWidget {
           ),
           borderSide: BorderSide(
             width: this.isBorder ? 1 : 0,
-            style: this.isBorder ? BorderStyle.solid : BorderStyle.none
-          )
+            style: this.isBorder ? BorderStyle.solid : BorderStyle.none,
+          ),
         ),
       ),
     );

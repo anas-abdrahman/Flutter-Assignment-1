@@ -1,8 +1,8 @@
-import 'package:day_1/screen/home_screen.dart';
-import 'package:day_1/utils/app_icon.dart';
-import 'package:day_1/widget/app_button.dart';
-import 'package:day_1/widget/app_text_field.dart';
 import 'package:flutter/material.dart';
+import '../widget/app_icon.dart';
+import '../widget/app_button.dart';
+import '../widget/app_text_field.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override

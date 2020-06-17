@@ -1,6 +1,7 @@
-import 'package:day_1/style/app_color.dart';
-import 'package:day_1/widget/app_text_field.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import '../style/app_color.dart';
+import '../widget/app_text_field.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -29,22 +30,10 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(height: 24),
                     slider(),
                     SizedBox(height: 14),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: List<Widget>.generate(5, (index) {
-                        return circleButton(
-                          icon: Icons.favorite_border,
-                          onTap: () {},
-                        );
-                      }).toList(),
-                    ),
-                    SizedBox(
-                      height: 23,
-                    ),
+                    buttonShop(),
+                    SizedBox(height: 23),
                     mostPopular(),
-                    SizedBox(
-                      height: 23,
-                    ),
+                    SizedBox(height: 23),
                     dailyDiscover()
                   ],
                 ),
@@ -89,54 +78,56 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget slider() {
-    return Container(
-      height: 200,
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
-        ),
-      ),
-    );
+    return SizedBox(
+        height: 200.0,
+        width: 350.0,
+        child: Carousel(
+          images: [
+            ExactAssetImage("assets/images/banner.png"),
+            ExactAssetImage("assets/images/banner.png"),
+            ExactAssetImage("assets/images/banner.png"),
+            ExactAssetImage("assets/images/banner.png"),
+            ExactAssetImage("assets/images/banner.png"),
+            ExactAssetImage("assets/images/banner.png"),
+          ],
+          dotSize: 4.0,
+          dotSpacing: 15.0,
+          dotColor: Colors.white,
+          indicatorBgPadding: 30.0,
+          dotBgColor: Colors.white.withOpacity(0),
+          borderRadius: true,
+          dotIncreasedColor: Colors.red,
+        ));
   }
 
-  Widget dailyDiscover() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Daily Discover',
-          textAlign: TextAlign.left,
-        ),
-        SizedBox(
-          height: 23,
-        ),
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                height: 120,
-                color: Colors.grey[300],
-              ),
-            ),
-            SizedBox(width: 10),
-            Expanded(
-              child: Container(
-                height: 120,
-                color: Colors.grey[300],
-              ),
-            ),
-            SizedBox(width: 10),
-            Expanded(
-              child: Container(
-                height: 120,
-                color: Colors.grey[300],
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
+  Widget buttonShop() {
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      circleButton(
+        text: 'Clothes',
+        icon: Icons.streetview,
+        onTap: () {},
+      ),
+      circleButton(
+        text: 'Beauty',
+        icon: Icons.wc,
+        onTap: () {},
+      ),
+      circleButton(
+        text: 'Shoes',
+        icon: Icons.slow_motion_video,
+        onTap: () {},
+      ),
+      circleButton(
+        text: 'Electronics',
+        icon: Icons.store,
+        onTap: () {},
+      ),
+      circleButton(
+        text: 'Furniture',
+        icon: Icons.shopping_basket,
+        onTap: () {},
+      )
+    ]);
   }
 
   Widget mostPopular() {
@@ -154,15 +145,80 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Container(
-                height: 80,
-                color: Colors.grey[300],
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(4),
+                  ),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      blurRadius: 5,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      width: 6,
+                      height: 70,
+                      color: Colors.red,
+                    ),
+                    Image.asset(
+                      'assets/images/most_popular_1.png',
+                      height: 70,
+                    ),
+                    Positioned(
+                      child: Text(
+                        'Portable\nCar Seat',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      top: 20,
+                      left: 20,
+                    )
+                  ],
+                ),
               ),
             ),
             SizedBox(width: 10),
             Expanded(
               child: Container(
-                height: 80,
-                color: Colors.grey[300],
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(4),
+                  ),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      blurRadius: 5,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      width: 6,
+                      height: 70,
+                      color: Colors.blue,
+                    ),
+                    Image.asset(
+                      'assets/images/most_popular_2.png',
+                      height: 70,
+                    ),
+                    Positioned(
+                      child: Text(
+                        'Himawari',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 12),
+                      ),
+                      top: 20,
+                      left: 20,
+                    )
+                  ],
+                ),
               ),
             ),
           ],
@@ -172,15 +228,79 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Container(
-                height: 80,
-                color: Colors.grey[300],
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(4),
+                  ),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      blurRadius: 5,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      width: 6,
+                      height: 70,
+                      color: Colors.purple,
+                    ),
+                    Image.asset(
+                      'assets/images/most_popular_3.png',
+                      height: 70,
+                    ),
+                    Positioned(
+                      child: Text(
+                        'J-COMFY UNISEX',
+                        style: TextStyle(fontSize: 9),
+                      ),
+                      top: 20,
+                      left: 15,
+                    )
+                  ],
+                ),
               ),
             ),
             SizedBox(width: 10),
             Expanded(
               child: Container(
-                height: 80,
-                color: Colors.grey[300],
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(4),
+                  ),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      blurRadius: 5,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      width: 6,
+                      height: 70,
+                      color: Colors.green,
+                    ),
+                    Image.asset(
+                      'assets/images/most_popular_4.png',
+                      height: 70,
+                    ),
+                    Positioned(
+                      child: Text(
+                        'RAHSIA',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      top: 15,
+                      left: 15,
+                    )
+                  ],
+                ),
               ),
             ),
           ],
@@ -189,7 +309,150 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget circleButton({GestureTapCallback onTap, IconData icon}) {
+  Widget dailyDiscover() {
+    return Column(
+      children: <Widget>[
+        Text(
+          'Daily Discover',
+          textAlign: TextAlign.left,
+        ),
+        SizedBox(height: 23),
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      blurRadius: 5,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                  color: Colors.white,
+                ),
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      'assets/images/product_1.png',
+                      height: 80,
+                      fit: BoxFit.contain,
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Florol Dress',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    Text(
+                      'RM49.99',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      blurRadius: 5,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                  color: Colors.white,
+                ),
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      'assets/images/product_2.png',
+                      height: 80,
+                      fit: BoxFit.contain,
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Pattern Dress',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    Text(
+                      'RM20.58',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(width: 10),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      blurRadius: 5,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                  color: Colors.white,
+                ),
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      'assets/images/product_3.png',
+                      height: 80,
+                      fit: BoxFit.contain,
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Cotton Dress',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    Text(
+                      'RM11.00',
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget circleButton({String text, GestureTapCallback onTap, IconData icon}) {
     double size = 50.0;
     return Column(
       children: <Widget>[
@@ -199,7 +462,7 @@ class HomeScreen extends StatelessWidget {
             width: size,
             height: size,
             decoration: new BoxDecoration(
-              color: Colors.grey[300],
+              color: AppColor.background,
               shape: BoxShape.circle,
             ),
             child: new Icon(
@@ -208,10 +471,13 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 4),
+        SizedBox(height: 8),
         Text(
-          'Text',
-          style: TextStyle(color: Colors.grey, fontSize: 12),
+          text,
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 10,
+          ),
         )
       ],
     );

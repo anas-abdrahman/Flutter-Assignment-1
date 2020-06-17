@@ -1,5 +1,5 @@
-import 'package:day_1/style/app_color.dart';
 import 'package:flutter/material.dart';
+import '../style/app_color.dart';
 
 class AppButton extends StatelessWidget {
   final String text;
@@ -16,8 +16,9 @@ class AppButton extends StatelessWidget {
       child: FlatButton(
         textColor: Colors.white,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50.0),
-            side: BorderSide(color: Colors.red)),
+          borderRadius: BorderRadius.circular(50.0),
+          side: BorderSide(color: Colors.red),
+        ),
         child: Text(this.text),
         color: this.color ?? AppColor.primaryColor,
         onPressed: this.onPressed,
