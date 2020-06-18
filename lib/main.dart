@@ -1,7 +1,6 @@
+import 'package:assignment_1/screen/splash_screen.dart';
+import 'package:assignment_1/utils/app_route.dart';
 import 'package:flutter/material.dart';
-import 'screen/home_screen.dart';
-import 'screen/login_screen.dart';
-import 'screen/splash_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,11 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      routes: {
-        '/'      : (context) => SplashScreen(),
-        '/login' : (context) => LoginScreen(),
-        '/home'  : (context) => HomeScreen(),
-      },
+      home: SplashScreen(),
     );
   }
 }

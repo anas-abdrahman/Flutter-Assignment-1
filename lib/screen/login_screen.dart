@@ -1,8 +1,8 @@
+import 'package:assignment_1/utils/app_route.dart';
 import 'package:flutter/material.dart';
 import '../widget/app_icon.dart';
 import '../widget/app_button.dart';
 import '../widget/app_text_field.dart';
-import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -13,8 +13,6 @@ class LoginScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(40.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   height: 200,
@@ -25,7 +23,10 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Text(
                   'Sign in',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
                 ),
                 SizedBox(height: 50),
                 AppTextField(
@@ -43,12 +44,7 @@ class LoginScreen extends StatelessWidget {
                 AppButton(
                   text: 'Login',
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
-                      ),
-                    );
+                    AppRoute.homeScreen(context);
                   },
                 ),
                 SizedBox(height: 20),
